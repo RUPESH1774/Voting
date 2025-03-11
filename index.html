@@ -1,0 +1,33 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="crowd-indian-voters-showing-index-finger-after-voting-with-tricolor-brush-effect-election-day_1302-31473.avif">
+</head>
+<body>
+    <h1> Voting Age Checker</h1>
+    <div>
+   <button onclick="dark()">Dark</button>
+    <button onclick="light()">Light</button>
+</div>
+    <form name="frm" onsubmit="send()" >
+        <label for="Name">Enter Your Name</label><br>
+        <input type="text" name="Name" id="Name" placeholder="Enter your Name" required><br><br>
+        <label for="City">City</label><br>
+        <input type="text" name="City" id="City" placeholder="Enter Your City"><br><br>
+        <label for="Number">Enter Your Number</label><br>
+        <input type="number" name="Number" id="Number"  placeholder="Enter Your Number" required><br><br>
+        <label for="Age">Age</label><br>
+        <input type="number" name="Age" id="Age"d placeholder="Enter your Age" required><br><br>
+        <label for="Document">Upload VoterID</label><br>
+        <input type="file" name="Document" id="Document" placeholder="Upload Document"><br><br>
+        <button onsubmit="sumbit()">Sumbit</button>
+        <button>Reset</button>
+    </form>
+ <marquee behavior="" direction="">Create VoterID IN Just Minute <a href="https://voters.eci.gov.in/">Cilick here</a></marquee>
+    
+    <script src="app.js"></script>
+</body>
+</html>
