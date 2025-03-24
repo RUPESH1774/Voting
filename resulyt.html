@@ -1,13 +1,16 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href=crowd-indian-voters-showing-index-finger-after-voting-with-tricolor-brush-effect-election-day_1302-31473.avif">
     <title>Result</title>
     <style>
-        *{
+        * {
             background-color: black;
+            color: white;
         }
-        h1{
+        h1 {
             text-align: center;
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             font-weight: lighter;
@@ -17,41 +20,40 @@
             border-radius: 30px;
             box-shadow: 20px 10px 16px black;
         }
-        table{
+        table {
             background-color: springgreen;
             color: rgb(36, 94, 146);
             font-size: 20px;
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
             width: 100%;
+            text-align: center;
         }
-        table tr{
+        table tr {
             background-color: rgb(66, 180, 201);
             color: snow;
             font-style: oblique;
         }
-        .img{
-             display: flex;
-             justify-content: center;
-             margin-top: 100px;
+        .img {
+            display: flex;
+            justify-content: center;
+            margin-top: 100px;
         }
-        .img img{
+        .img img {
             height: 200px;
         }
-        @media screen and (max-width:750px) and (min-width:545px){
-                table{
-                   color: rgb(65, 107, 143); 
-                    font-size: 10.5px;
-                    background-color: black;
-                 
-                }
-                img{
-                    margin-left:10px;
-                    width: 28pc;
-                
-                }
+        @media screen and (max-width:750px) and (min-width:545px) {
+            table {
+                color: rgb(65, 107, 143);
+                font-size: 10.5px;
+                background-color: black;
+            }
+            img {
+                margin-left: 10px;
+                width: 28pc;
+            }
         }
         @media screen and (max-width:544px) {
-            table{
+            table {
                 font-size: 8px;
                 height: 200px;
             }
@@ -59,8 +61,9 @@
     </style>
 </head>
 <body onload="fetch()">
-   <h1>Result Sheet</h1>
-    <table id="table" border="3" cellpadding="20">
+    <h1>Result Sheet</h1>
+
+    <table border="3" cellpadding="20">
         <tr>
             <th>Name</th>
             <th>Number</th>
@@ -78,23 +81,36 @@
             <td><p id="Eli"></p></td>
         </tr>
     </table>
-    <div class="img"><img src="OIP.jpg" alt=""></div>
 
-<script>
-function fetch(){
-        document.querySelector('#Name').innerHTML=sessionStorage.getItem('Name')
-        document.querySelector('#Age').innerHTML=sessionStorage.getItem('Age')
-        document.querySelector('#Number').innerHTML=sessionStorage.getItem('Number')
-        document.querySelector('#City').innerHTML=sessionStorage.getItem('City')
-        document.querySelector('#Document').innerHTML=sessionStorage.getItem('Document')
-    }
-    let age=sessionStorage.getItem("Age");
-      if(age>=18){
-        document.querySelector("#Eli").innerHTML='Yes';
-      }
-      else{
-        document.querySelector('#Eli').innerHTML='Not Eligable'
-      }
-</script>
+    <div class="img">
+        <img src="OIP.jpg" alt="Voting Image">
+    </div>
+
+    <script>
+        function fetch() {
+            if (!sessionStorage.getItem('Name')) {
+                alert("No data found. Please fill out the form first!");
+                window.location.href = 'index.html';
+                return;
+            }
+
+            document.querySelector('#Name').innerHTML = sessionStorage.getItem('Name');
+            document.querySelector('#Age').innerHTML = sessionStorage.getItem('Age');
+            document.querySelector('#Number').innerHTML = sessionStorage.getItem('Number');
+            document.querySelector('#City').innerHTML = sessionStorage.getItem('City');
+
+            const docPreview = sessionStorage.getItem('DocumentPreview');
+            const docName = sessionStorage.getItem('DocumentName');
+
+            if (docPreview) {
+                document.querySelector('#Document').innerHTML = `<img src="${docPreview}" height="100">`;
+            } else {
+                document.querySelector('#Document').innerHTML = docName || 'No Document';
+            }
+
+            let age = sessionStorage.getItem("Age");
+            document.querySelector('#Eli').innerHTML = age >= 18 ? 'Yes' : 'Not Eligible';
+        }
+    </script>
 </body>
 </html>
